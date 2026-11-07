@@ -32,6 +32,7 @@ def check():
                 if '://' not in ref and not ref.startswith('#'):
                     assert (page.parent / ref.split('#')[0]).is_file(), f'Missing reference: {page}: {ref}'
     for filename, names in [('library-format.md', ('log', 'write', 'manage')),
+                            ('materials.md', NAMES),
                             ('collaboration.md', NAMES)]:
         values = {(ROOT / name / 'references' / filename).read_bytes() for name in names}
         assert len(values) == 1, f'Shared reference drift: {filename}'
